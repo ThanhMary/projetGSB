@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gestion des Praticiens
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+    <img id = "imageMedecin" src="assets/img/medecin.png"/>
+  <ion-searchbar (ionInput)="filterPraticiens($event)" [(ngModel)]="searchText"></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let praticien of praticiens">
+      <button ion-item (click)="editPraticien(praticien.id)">
+      <h1>{{ praticien.nom }} {{ praticien.prenom }}</h1>
+      <p> {{ praticien.type_libelle}} </p>
+      <p class="tel">{{ praticien.tel }}</p>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
+ 
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="addPraticien()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+ 
+</ion-content>
+ 
+<ion-footer>
+  <ion-toolbar>
+    <p>Total: {{ praticiens.length }}</p>
+    <ion-list>
+      <ion-item no-lines>
+        <ion-label>Liste inativé</ion-label>
+        <ion-toggle name="listeinatives" [(ngModel)]="onlyInactives" (ionChange)="getAllPraticiens()"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+</ion-footer>

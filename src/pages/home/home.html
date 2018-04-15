@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+ 
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <img src="assets/img/login.jpg" style="display:block;width:30%;height:auto;margin-left:auto;margin-right:auto;" />
+        <form>
+              <div class="spacer" style="width:300px;height:16px;"></div>
+              <ion-item>
+                <ion-label stacked> 
+                  Pseudo
+                </ion-label>
+                <ion-input type="text" placeholder="Votre email"></ion-input>
+              </ion-item>
+              <div class="spacer" style="width:300px;height:15px;"></div>
+              <ion-item >
+                <ion-label stacked>
+                  Mot de passe
+                </ion-label>
+                <ion-input type="password" placeholder="Votre mot de passe"></ion-input>
+              </ion-item>
+              <br>
+          
+              <button  ion-button block style="font-size:15px;" (click)="goToAccueil()">
+              Connecter
+            </button>
+            <br>
+           
+             <ion-item >
+                <ion-label>
+                  Enregistrer votre pseudo?
+                </ion-label>
+                <ion-checkbox on-click="enregistrerPseudo()"></ion-checkbox>
+              </ion-item>
+            </form>
+            <br>
+            <br>
+    <img src="assets/img/logo.png" style="display:block;width:20%;height:auto;margin-left:auto;margin-right:auto;" />
+</ion-content>

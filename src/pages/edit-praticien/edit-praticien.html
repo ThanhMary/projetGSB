@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     Edit Page
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+   <ion-list>
+     <ion-item>
+      <ion-label stacked>Nom</ion-label>
+      <ion-input type="text" name="nom" [(ngModel)]="model.nom"></ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label stacked>Prenom</ion-label>
+      <ion-input type="text" name="prenom" [(ngModel)]="model.prenom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Adresse</ion-label>
+      <ion-input type="text" name="adresse" [(ngModel)]="model.adresse"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Département</ion-label>
+      <ion-input type="text" name="departement" [(ngModel)]="model.departement"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Téléphone</ion-label>
+      <ion-input type="number" name="tel" [(ngModel)]="model.tel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Spécialité Plus</ion-label>
+      <ion-input type="text" name="specialitePlus" [(ngModel)]="model.specialitePlus"></ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label stacked>Type</ion-label>
+      <ion-select name="type" [(ngModel)]="model.idtype">
+        <ion-option *ngFor="let type of types" value="{{ type.idtype }}">{{ type.libelle}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ative</ion-label>
+      <ion-checkbox name="active" [(ngModel)]="model.active"></ion-checkbox>
+    </ion-item>
+  
+  </ion-list>
+ 
+  <button ion-button block (click)="save()">Enregistrer</button>
+ 
+</ion-content>
+
+

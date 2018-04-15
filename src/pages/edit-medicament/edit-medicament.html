@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+          Edit Page
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding >
+   <ion-list>
+      <ion-item color="positive">
+        <ion-icon name="archive" item-left></ion-icon>
+     Mise à jour
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Nom Commercial </ion-label>
+        <ion-input type="text" [(ngModel)]="model.nomCommercial" name="nomMed"></ion-input>
+      </ion-item>
+  
+      <ion-item >
+        <ion-label> Composition </ion-label>
+        <ion-input type="text" [(ngModel)]="model.composition" name="composition"></ion-input>
+      </ion-item>
+  
+      <ion-item >
+        <ion-label> Effets </ion-label>
+        <ion-textarea [(ngModel)]="model.effets" name="effets" ></ion-textarea>
+      </ion-item>
+  
+      <ion-item >
+        <ion-label> ContreIndication </ion-label>
+        <ion-input type="text" [(ngModel)]="model.contreIndication" name="contreIndication"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Famille</ion-label>
+            <ion-select [(ngModel)]="model.idFamille" name="FamilleID">
+              <ion-option *ngFor= "let familleMed of familleMeds" value = "{{familleMed.idFamille}}"> {{familleMed.libelle}} </ion-option>>
+            </ion-select>
+      </ion-item>
+  
+        
+      <button ion-button type="submit" block color="positive" on-click= "saveMedicament()">Enregistrer</button>
+     
+     </ion-list>
+     <div>
+        <a style="display:block;" on-click="goToAccueil()">
+          <img src="assets/img/logo.png" style="display:block;width:20%;height:auto;margin-left:auto;margin-right:auto;" />
+        </a>
+     </div>
+     
+    </ion-content>
