@@ -1,16 +1,17 @@
 <ion-header  >
     <ion-navbar color="positve">
-      <ion-title>Liste des medicaments</ion-title>
+      <ion-title>Gestion des medicaments</ion-title>
      </ion-navbar>
   </ion-header>
   
   <ion-content padding>
     <img src="assets/img/medi.jpg"/>
+    <br>
    <ion-searchbar (ionInput)="filterMedicament($event)" [(ngModel)]= "searchTextMed"></ion-searchbar>
       <ion-list>
       <ion-item-sliding *ngFor="let medicament of medicaments">
        <button ion-item (click)="editMedicament(medicament.idMed)">
-          <h2>{{medicament.famille_libelle}} {{medicament.nomCommercial}}</h2>
+          <h2>{{medicament.famille}} {{medicament.nomCommercial}}</h2>
           <p>{{medicament.composition}}</p>
           <p>{{medicament.effets}}</p>
           <p>{{medicament.contreIndication}}</p>
@@ -30,7 +31,7 @@
 
 <ion-footer>
     <ion-toolbar>
-      <p>Total: {{ medicaments.length }}</p>
+    <!--  <p>Total: {{ medicaments.length }}</p>-->
       <ion-list>
         <ion-item no-lines>
           <ion-label>Liste inativé</ion-label>
@@ -39,3 +40,5 @@
       </ion-list>
     </ion-toolbar>
   </ion-footer>
+
+  

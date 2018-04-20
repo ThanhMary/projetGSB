@@ -57,4 +57,8 @@ export class GestionMedicamentPage {
     this.getAllMedicaments();
   }
 
+  
+
+  
+
 }

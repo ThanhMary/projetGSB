@@ -15,17 +15,12 @@ import { EditRapportPage } from '../pages/edit-rapport/edit-rapport';
 import { GestionPraticienPage } from '../pages/gestion-praticien/gestion-praticien';
 import { GestionRapportPage } from '../pages/gestion-rapport/gestion-rapport';
 import { GestionMedicamentPage } from '../pages/gestion-medicament/gestion-medicament';
- 
 import { SQLite } from '@ionic-native/sqlite'
 import { DatabaseProvider } from '../providers/database/database';
-
 import { PraticienProvider } from '../providers/praticien/praticien';
-import { TypePraticienProvider } from '../providers/type-praticien/type-praticien';
-
 import { MedicamentProvider } from '../providers/medicament/medicament';
-import { FamilleMedProvider } from '../providers/famille-med/famille-med';
-
 import { RapportProvider } from '../providers/rapport/rapport';
+import { CategoryProvider } from '../providers/category/category';
 
  
 @NgModule({
@@ -67,10 +62,9 @@ import { RapportProvider } from '../providers/rapport/rapport';
     SQLite,
     DatabaseProvider,
     PraticienProvider,
-    TypePraticienProvider,
     MedicamentProvider,
-    FamilleMedProvider,
-    RapportProvider
+    RapportProvider,
+    CategoryProvider
    
    
     

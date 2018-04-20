@@ -13,9 +13,16 @@
     <ion-item-sliding *ngFor="let praticien of praticiens">
       <button ion-item (click)="editPraticien(praticien.id)">
       <h1>{{ praticien.nom }} {{ praticien.prenom }}</h1>
-      <p> {{ praticien.type_libelle}} </p>
+      <p> {{ praticien.category_name}} </p>
       <p class="tel">{{ praticien.tel }}</p>
       </button>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="removePraticien(praticien)">
+          <ion-icon name="trash"></ion-icon>
+          Supprimer
+        </button>
+      </ion-item-options>
+ 
     </ion-item-sliding>
   </ion-list>
  
@@ -30,8 +37,8 @@
     <p>Total: {{ praticiens.length }}</p>
     <ion-list>
       <ion-item no-lines>
-        <ion-label>Liste inativé</ion-label>
-        <ion-toggle name="listeinatives" [(ngModel)]="onlyInactives" (ionChange)="getAllPraticiens()"></ion-toggle>
+        <ion-label>Liste des inativés </ion-label>
+        <ion-toggle name="listesInatives" [(ngModel)]="onlyInactives" (ionChange)="getAllPraticiens()"></ion-toggle>
       </ion-item>
     </ion-list>
   </ion-toolbar>

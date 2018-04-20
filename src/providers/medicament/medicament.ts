@@ -13,8 +13,8 @@ export class MedicamentProvider {
 public insert(medicament: Medicament){
   return this.dbProvider.getDB()
   .then((db: SQLiteObject) =>{
-    let sql = 'INSERT INTO medicaments (nomCommercial, composition, effets, contreIndication, active, familleID,) VALUES (?, ?, ?, ?, ?, ?)';
-    let data = [medicament.nomCommercial,medicament.composition, medicament.effets, medicament.contreIndication, medicament.active ? 1 : 0, medicament.familleID, ];
+    let sql = 'INSERT INTO medicaments (nomCommercial, composition, effets, contreIndication, active, famille,) VALUES (?, ?, ?, ?, ?, ?)';
+    let data = [medicament.nomCommercial,medicament.composition, medicament.effets, medicament.contreIndication, medicament.active ? 1 : 0, medicament.famille, ];
     return db.executeSql (sql, data) 
     .catch((e)=>console.error(e));
     })
@@ -27,7 +27,7 @@ public update(medicament: Medicament){
   return this.dbProvider.getDB()
   .then ((db: SQLiteObject)=>{
     let sql = 'update medicaments set nomCommercial=?, composition=?, effets=?, contreIndication=?, familleID=?, active=?';
-    let data = [medicament.nomCommercial, medicament.composition, medicament.effets, medicament.contreIndication, medicament.familleID, medicament.active ? 1 : 0];
+    let data = [medicament.nomCommercial, medicament.composition, medicament.effets, medicament.contreIndication, medicament.famille, medicament.active ? 1 : 0];
     return db.executeSql(sql, data)
     .catch ((e)=>console.error());
   })
@@ -64,7 +64,7 @@ public get(idMed){
         medicament.effets= item.effets;
         medicament.composition= item.composition;
         medicament.contreIndication= item.contreIndication;
-        medicament.familleID = item.familleID;
+        medicament.famille = item.famille;
       
         return medicament;
       }
@@ -80,7 +80,7 @@ public get(idMed){
 public getAll(active: boolean, nomCommercial: string = null){
   return this.dbProvider.getDB()
   .then ((db: SQLiteObject)=>{
-    let sql = 'SELECT m.*, f.libelle as famille_libelle FROM medicaments m INNER JOIN familleMed f ON m.familleID = f.idfamille where m.active = ?';
+    let sql = 'SELECT * FROM medicaments where active = ?';
     var data: any[] = [active ? 1 : 0];
 
     if (nomCommercial){
@@ -112,7 +112,7 @@ export class Medicament {
   composition: string;
   effets: string;
   contreIndication: string;
-  familleID: string;
+  famille: string;
   active: boolean;
   
 }

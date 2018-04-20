@@ -83,7 +83,7 @@ public get(idRap: number){
 public getAll(rdate: Date = null){
   return this.dbProvider.getDB()
   .then ((db: SQLiteObject)=>{
-    let sql = 'SELECT r.*, p.nom, m.nomCommercial FROM rapports r INNER JOIN medicaments m on r.medID = m.idMed, INNER JOIN praticiens p ON r.praID = p.idPra' ;
+    let sql = 'SELECT rdate FROM rapports r' ;
     var data: any[] = [];
 
   //filtrer par la rdate

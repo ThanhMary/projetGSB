@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
-
+import { CategoryProvider } from '../../providers/category/category'
 import { PraticienProvider, Praticien } from '../../providers/praticien/praticien';
-import { TypePraticienProvider } from '../../providers/type-praticien/type-praticien';
 
 @Component({
   selector: 'page-edit-praticien',
@@ -10,12 +9,13 @@ import { TypePraticienProvider } from '../../providers/type-praticien/type-prati
 })
 export class EditPraticienPage {
   model: Praticien;
-  typePraticiens: any[];
- 
+  categories: any [];
+  
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     private toast: ToastController, private praticienProvider: PraticienProvider,
-    private typePraticienProvider: TypePraticienProvider) {
+    private categoryProvider: CategoryProvider
+  ) {
  
     this.model = new Praticien();
  
@@ -31,14 +31,15 @@ export class EditPraticienPage {
    * Runs when the page has loaded
    */
   ionViewDidLoad() {
-    this.typePraticienProvider.getAll()
+      this.categoryProvider.getAll()
       .then((result: any[]) => {
-        this.typePraticiens = result;
+        this.categories = result;
       })
       .catch(() => {
-        this.toast.create({ message: 'Erreur en creant les types.', duration: 3000, position: 'botton' }).present();
+        this.toast.create({ message: 'Erreur de get des categories.', duration: 3000, position: 'botton' }).present();
       });
-  }
+
+    }
  
   save() {
     this.savePraticien()
@@ -52,7 +53,7 @@ export class EditPraticienPage {
   }
  
   private savePraticien() {
-    if (this.model.idPra) {
+    if (this.model.id) {
       return this.praticienProvider.update(this.model);
     } else {
       return this.praticienProvider.insert(this.model);

@@ -30,4 +30,8 @@ export class AccueilPage {
     this.navCtrl.push(GestionMedicamentPage);
   }
 
+  
+  
+
+
 }

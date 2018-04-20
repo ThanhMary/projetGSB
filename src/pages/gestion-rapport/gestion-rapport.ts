@@ -31,11 +31,11 @@ export class GestionRapportPage {
   }
 
   addRapport(){
-    this.navCtrl.push('ModifierRapprotPage');
+    this.navCtrl.push(EditRapportPage);
   }
 
   editRapport(idRap: number){
-    this.navCtrl.push('ModifierRapportPage', {idRap: idRap});
+    this.navCtrl.push(EditRapportPage, {idRap: idRap});
   }
 
   removeRapport(rapport: Rapport){
@@ -43,7 +43,7 @@ export class GestionRapportPage {
     .then(() => {
       var index = this.rapports.indexOf(rapport);
        this.rapports.splice(index, 1);
-       this.toast.create({ message: 'rapport removed.', duration: 3000, position: 'botton' }).present();
+       this.toast.create({ message: 'rapport removed.', duration: 10000, position: 'botton' }).present();
      })
  }
 

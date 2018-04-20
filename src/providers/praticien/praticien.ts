@@ -10,8 +10,8 @@ export class PraticienProvider {
   public insert(praticien: Praticien) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into praticiens (nom, prenom, adresse, departement, tel, specilitePlus, active, typeTD) values (?, ?, ?, ?, ?, ?, ?, ?)';
-        let data = [praticien.nom, praticien.prenom, praticien.adresse, praticien.departement, praticien.tel, praticien.specialitePlus,  praticien.active ? 1 : 0, praticien.typeID];
+        let sql = 'insert into praticiens (nom, prenom, adresse, departement, tel, specialitePlus, active, category_id) values (?, ?, ?, ?, ?, ?, ?, ?)';
+        let data = [praticien.nom, praticien.prenom, praticien.adresse, praticien.departement, praticien.tel, praticien.specialitePlus,  praticien.active ? 1 : 0, praticien.category_id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -22,8 +22,8 @@ export class PraticienProvider {
   public update(praticien: Praticien) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update praticiens set nom = ?, prenom = ?, adresse = ?, departement = ?, tel = ?, specialitePlus = ?, typeID = ? where idPra = ?';
-        let data = [praticien.nom, praticien.prenom, praticien.adresse, praticien.departement, praticien.tel, praticien.specialitePlus, praticien.active ? 1 : 0, praticien.typeID, praticien.idPra];
+        let sql = 'update praticiens set nom=?, prenom=?, adresse=?, departement=?, tel=?, specialitePlus=?, category_id=?, active=? where id=?';
+        let data = [praticien.nom, praticien.prenom, praticien.adresse, praticien.departement, praticien.tel, praticien.specialitePlus, praticien.category_id, praticien.active ? 1 : 0,  praticien.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -31,11 +31,11 @@ export class PraticienProvider {
       .catch((e) => console.error(e));
   }
  
-  public remove(idPra: number) {
+  public remove(id: number) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'delete from praticiens where idPra = ?';
-        let data = [idPra];
+        let sql = 'delete from praticiens where id = ?';
+        let data = [id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -43,18 +43,18 @@ export class PraticienProvider {
       .catch((e) => console.error(e));
   }
  
-  public get(idPra: number) {
+  public get(id: number) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'select * from praticiens where idPra = ?';
-        let data = [idPra];
+        let sql = 'select * from praticiens where id = ?';
+        let data = [id];
  
         return db.executeSql(sql, data)
           .then((data: any) => {
             if (data.rows.length > 0) {
               let item = data.rows.item(0);
               let praticien = new Praticien();
-              praticien.idPra = item.idPra;
+              praticien.id = item.id;
               praticien.nom = item.nom;
               praticien.prenom = item.prenom;
               praticien.adresse = item.adresse;
@@ -62,7 +62,7 @@ export class PraticienProvider {
               praticien.tel = item.tel;
               praticien.specialitePlus = item.specialitePlus;
               praticien.active = item.active;
-              praticien.typeID = item.typeID;
+              praticien.category_id = item.category_id;
  
               return praticien;
             }
@@ -77,7 +77,7 @@ export class PraticienProvider {
   public getAll(active: boolean, nom: string = null) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'SELECT p.*, t.libelle as type_libelle FROM praticiens p inner join typePraticiens t on p.typeID = t.idType where p.active = ?';
+        let sql = 'SELECT p.*, c.name as category_name FROM praticiens p inner join categories c on p.category_id = c.id where p.active = ?';
         var data: any[] = [active ? 1 : 0];
  
         // filtrer par nom de praticien
@@ -106,7 +106,7 @@ export class PraticienProvider {
 }
  
 export class Praticien {
-  idPra: number;
+  id: number;
   nom: string;
   prenom: string;
   adresse: string;
@@ -114,5 +114,5 @@ export class Praticien {
   tel: string;
   specialitePlus: string;
   active: boolean;
-  typeID: number;
+  category_id: string;
 }

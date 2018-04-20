@@ -3,7 +3,7 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { AccueilPage } from '../accueil/accueil';
 import {MedicamentProvider, Medicament} from '../../providers/medicament/medicament';
-import {FamilleMedProvider} from '../../providers/famille-med/famille-med';
+
 
 
 @Component({
@@ -12,13 +12,12 @@ import {FamilleMedProvider} from '../../providers/famille-med/famille-med';
 })
 export class EditMedicamentPage {
   model: Medicament;
-  familleMeds: any []
- 
+  
     constructor(public navCtrl: NavController, 
                public navParams: NavParams, 
                public toast:ToastController, 
                private medicamentProvider: MedicamentProvider, 
-               private familleMedProvider: FamilleMedProvider) {
+             ) {
    
    this.model = new Medicament();
     if(this.navParams.data.idMed){
@@ -30,19 +29,13 @@ export class EditMedicamentPage {
     }
     
    ionViewDidLoad() {
-     this.familleMedProvider.getAll()
-     .then ((result: any [])=>{
-       this.familleMeds = result;
-     })
-     .catch(()=>{
-      this.toast.create({ message: 'Erreur en creant les types.', duration: 3000, position: 'botton' }).present();
-    });
+     
 }
  
    save(){
      this.saveMedicament()
      .then(() => {
-      this.toast.create({ message: 'Praticien saved.', duration: 3000, position: 'botton' }).present();
+      this.toast.create({ message: 'Medicament saved.', duration: 3000, position: 'botton' }).present();
       this.navCtrl.pop();
     })
     .catch(() => {
@@ -56,8 +49,5 @@ private saveMedicament() {
        return this.medicamentProvider.insert(this.model);
      }
    }
-   private goToAccueil(){
-     this.navCtrl.push(AccueilPage);
-   }
-   
-  }
+
+}

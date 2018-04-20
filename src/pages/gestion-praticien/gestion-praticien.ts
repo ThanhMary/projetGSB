@@ -28,16 +28,16 @@ public getAllPraticiens() {
         this.praticiens = result;
       });
   }
- addPraticien(){
+addPraticien(){
     this.navCtrl.push(EditPraticienPage);
   }
  
-editPraticien(idPra: number) {
-    this.navCtrl.push(EditPraticienPage, { idPra: idPra });
+editPraticien(id: number) {
+    this.navCtrl.push(EditPraticienPage,{id: id});
   }
  
 removePraticien(praticien: Praticien) {
-    this.praticienProvider.remove(praticien.idPra)
+    this.praticienProvider.remove(praticien.id)
       .then(() => {
        var index = this.praticiens.indexOf(praticien);
         this.praticiens.splice(index, 1);

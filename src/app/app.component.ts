@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatabaseProvider } from '../providers/database/database';
 import { HomePage } from '../pages/home/home';
+import { SQLite, SQLiteObject  } from '@ionic-native/sqlite';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,3 +36,4 @@ export class MyApp {
     this.rootPage = HomePage;
   }
 }
+
