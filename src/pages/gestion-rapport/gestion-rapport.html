@@ -1,4 +1,58 @@
 <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gestion des Rapports
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+  <img src="assets/img/ecrit.png" style="display:block;width:90%;height:auto;margin-left:auto;margin-right:auto;" />
+  <ion-searchbar (ionInput)="filterRapports($event)" [(ngModel)]="searchDate"></ion-searchbar>
+    <ion-list>
+    <ion-item-sliding *ngFor="let rapport of rapports">
+      <button ion-item (click)="editRapport(rapport.id)">
+        <h1>{{ rapport.rdate }}</h1>
+        <p> {{ rapport.praticien_nom}} </p>
+      </button>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="removeRapport(rapport)">
+          <ion-icon name="trash"></ion-icon>
+          Supprimer
+        </button>
+     </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+ 
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="addRapport()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+ </ion-content>
+ 
+<ion-footer>
+  <ion-toolbar>
+    <p>Total: {{ rapports.length }}</p>
+    <ion-list>
+      <ion-item no-lines>
+        <ion-label>Liste des inativés </ion-label>
+        <ion-toggle name="listesInatives" [(ngModel)]="onlyInactives" (ionChange)="getAllRapports()"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-header>
     <ion-navbar>
       <ion-title>
         Gestion des Rapports
@@ -7,26 +61,31 @@
   </ion-header>
    
   <ion-content padding>
-      <img src="assets/img/ecrit.png" style="display:block;width:90%;height:auto;margin-left:auto;margin-right:auto;" />
-    <br>
-      <ion-searchbar (ionInput)="filterRapports($event)" [(ngModel)]="searchText"></ion-searchbar>
-    <ion-list>
-      <ion-item-sliding *ngFor="let rapport of rapports">
-        <button ion-item (click)="editRapport(rapport.idRap)">
-        <h1>{{ rapport.rdate }}</h1>
-        </button>
-      </ion-item-sliding>
-    </ion-list>
-   
+    <img src="assets/img/ecrit.png" style="display:block;width:90%;height:auto;margin-left:auto;margin-right:auto;" />
+        <ion-searchbar (ionInput)="filterRapports($event)" [(ngModel)]="searchDate "></ion-searchbar>
+          <ion-list>
+            <ion-item-sliding *ngFor="let rapport of rapports">
+              <button ion-item (click)="editRapport(rapport.id)">
+                <h1>{{ rapport.rdate}}</h1>
+                <p> {{ rapport.rapport_nom}} </p>
+              </button>
+             <ion-item-options side="left">
+               <button ion-button color="danger" (click)="removeRapport(rapport)">
+                  <ion-icon name="trash"></ion-icon>
+                  Supprimer
+                </button>
+             </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+         
     <ion-fab right bottom>
       <button ion-fab color="light" (click)="addRapport()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
-   
   </ion-content>
    
   <ion-footer>
     <ion-toolbar>
-     <!-- <p>Total: {{ rapports.length }}</p>-->
+      <p>Total:{{rapports.length}}</p>
       <ion-list>
         <ion-item no-lines>
           <ion-label>Liste inativé</ion-label>
@@ -34,4 +93,4 @@
         </ion-item>
       </ion-list>
     </ion-toolbar>
-  </ion-footer>
+  </ion-footer> -->

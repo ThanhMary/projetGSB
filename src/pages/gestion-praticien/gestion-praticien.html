@@ -7,30 +7,28 @@
 </ion-header>
  
 <ion-content padding>
-    <img id = "imageMedecin" src="assets/img/medecin.png"/>
+  <img id = "imageMedecin" src="assets/img/medecin.png"/>
   <ion-searchbar (ionInput)="filterPraticiens($event)" [(ngModel)]="searchText"></ion-searchbar>
-  <ion-list>
+    <ion-list>
     <ion-item-sliding *ngFor="let praticien of praticiens">
       <button ion-item (click)="editPraticien(praticien.id)">
-      <h1>{{ praticien.nom }} {{ praticien.prenom }}</h1>
-      <p> {{ praticien.category_name}} </p>
-      <p class="tel">{{ praticien.tel }}</p>
+        <h1>{{ praticien.nom }} {{ praticien.prenom }}</h1>
+        <p> {{ praticien.category_name}} </p>
+        <p class="tel">{{ praticien.tel }}</p>
       </button>
       <ion-item-options side="left">
         <button ion-button color="danger" (click)="removePraticien(praticien)">
           <ion-icon name="trash"></ion-icon>
           Supprimer
         </button>
-      </ion-item-options>
- 
-    </ion-item-sliding>
-  </ion-list>
+     </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
  
   <ion-fab right bottom>
     <button ion-fab color="light" (click)="addPraticien()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
- 
-</ion-content>
+ </ion-content>
  
 <ion-footer>
   <ion-toolbar>

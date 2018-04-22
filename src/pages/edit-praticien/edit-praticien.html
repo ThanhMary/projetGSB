@@ -8,6 +8,11 @@
  
 <ion-content padding>
    <ion-list>
+      <ion-item color="positive">
+          <ion-icon name="archive" item-left></ion-icon>
+           Les praticiens
+       </ion-item>
+  
      <ion-item>
       <ion-label stacked>Nom</ion-label>
       <ion-input type="text" name="nom" [(ngModel)]="model.nom"></ion-input>
@@ -17,18 +22,22 @@
       <ion-label stacked>Prenom</ion-label>
       <ion-input type="text" name="prenom" [(ngModel)]="model.prenom"></ion-input>
     </ion-item>
+   
     <ion-item>
       <ion-label stacked>Adresse</ion-label>
       <ion-input type="text" name="adresse" [(ngModel)]="model.adresse"></ion-input>
     </ion-item>
+   
     <ion-item>
       <ion-label stacked>Département</ion-label>
       <ion-input type="text" name="departement" [(ngModel)]="model.departement"></ion-input>
     </ion-item>
+    
     <ion-item>
       <ion-label stacked>Téléphone</ion-label>
       <ion-input type="number" name="tel" [(ngModel)]="model.tel"></ion-input>
     </ion-item>
+   
     <ion-item>
       <ion-label stacked>Spécialité Plus</ion-label>
       <ion-input type="text" name="specialitePlus" [(ngModel)]="model.specialitePlus"></ion-input>
@@ -37,18 +46,18 @@
     <ion-item>
       <ion-label stacked>Categorie</ion-label>
       <ion-select name="category_id" [(ngModel)]="model.category_id">
-        <ion-option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name}}</ion-option>
+          <ion-option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name}}</ion-option>
       </ion-select>
     </ion-item>
-
+   
     <ion-item>
-      <ion-label>Ative</ion-label>
+      <ion-label stacked>Ative</ion-label>
       <ion-checkbox name="active" [(ngModel)]="model.active"></ion-checkbox>
     </ion-item>
-  
+    
+    <button ion-button block (click)="save()">Enregistrer</button>
+
   </ion-list>
- 
-  <button ion-button block (click)="save()">Enregistrer</button>
  
 </ion-content>
 

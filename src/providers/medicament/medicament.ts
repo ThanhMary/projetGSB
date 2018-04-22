@@ -14,7 +14,7 @@ public insert(medicament: Medicament){
   return this.dbProvider.getDB()
   .then((db: SQLiteObject) =>{
     let sql = 'INSERT INTO medicaments (nomCommercial, composition, effets, contreIndication, active, famille,) VALUES (?, ?, ?, ?, ?, ?)';
-    let data = [medicament.nomCommercial,medicament.composition, medicament.effets, medicament.contreIndication, medicament.active ? 1 : 0, medicament.famille, ];
+    let data = [medicament.nomCommercial,medicament.composition, medicament.effets, medicament.contreIndication, medicament.active ? 1 : 0, medicament.familleID, ];
     return db.executeSql (sql, data) 
     .catch((e)=>console.error(e));
     })
@@ -26,8 +26,8 @@ public insert(medicament: Medicament){
 public update(medicament: Medicament){
   return this.dbProvider.getDB()
   .then ((db: SQLiteObject)=>{
-    let sql = 'update medicaments set nomCommercial=?, composition=?, effets=?, contreIndication=?, familleID=?, active=?';
-    let data = [medicament.nomCommercial, medicament.composition, medicament.effets, medicament.contreIndication, medicament.famille, medicament.active ? 1 : 0];
+    let sql = 'update medicaments set nomCommercial=?, composition=?, effets=?, contreIndication=?, familleID=?, active=? where id=?';
+    let data = [medicament.nomCommercial, medicament.composition, medicament.effets, medicament.contreIndication, medicament.familleID, medicament.active ? 1 : 0, medicament.idMed];
     return db.executeSql(sql, data)
     .catch ((e)=>console.error());
   })
@@ -64,7 +64,7 @@ public get(idMed){
         medicament.effets= item.effets;
         medicament.composition= item.composition;
         medicament.contreIndication= item.contreIndication;
-        medicament.famille = item.famille;
+        medicament.familleID = item.familleID;
       
         return medicament;
       }
@@ -112,7 +112,7 @@ export class Medicament {
   composition: string;
   effets: string;
   contreIndication: string;
-  famille: string;
+  familleID: string;
   active: boolean;
   
 }

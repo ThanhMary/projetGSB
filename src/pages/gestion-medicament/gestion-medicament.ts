@@ -22,7 +22,6 @@ export class GestionMedicamentPage {
   searchTextMed: string = null;
   
   constructor(public navCtrl: NavController, 
-         //     public sqlite:SQLiteObject,
               private toast: ToastController,
               private medicamentProvider: MedicamentProvider) {  }
 

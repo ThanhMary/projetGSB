@@ -18,8 +18,7 @@ export class EditPraticienPage {
   ) {
  
     this.model = new Praticien();
- 
-    if (this.navParams.data.id) {
+     if (this.navParams.data.id) {
       this.praticienProvider.get(this.navParams.data.id)
         .then((result: any) => {
           this.model = result;

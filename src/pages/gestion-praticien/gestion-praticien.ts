@@ -45,7 +45,7 @@ removePraticien(praticien: Praticien) {
       })
   }
  
-filterPraticiens(ev: any) {
+public filterPraticiens(ev: any) {
     this.getAllPraticiens();
   }
  

@@ -66,8 +66,7 @@ export class PraticienProvider {
  
               return praticien;
             }
- 
-            return null;
+             return null;
           })
           .catch((e) => console.error(e));
       })
@@ -85,8 +84,7 @@ export class PraticienProvider {
           sql += ' and p.nom like ?'
           data.push('%' + nom + '%');
         }
- 
-        return db.executeSql(sql, data)
+         return db.executeSql(sql, data)
           .then((data: any) => {
             if (data.rows.length > 0) {
               let praticiens: any[] = [];
@@ -103,7 +101,7 @@ export class PraticienProvider {
       })
       .catch((e) => console.error(e));
   }
-}
+}// fermeture de la classe PraticienProvider
  
 export class Praticien {
   id: number;
@@ -114,5 +112,5 @@ export class Praticien {
   tel: string;
   specialitePlus: string;
   active: boolean;
-  category_id: string;
+  category_id: number;
 }
