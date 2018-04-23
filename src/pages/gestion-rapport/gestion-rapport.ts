@@ -3,10 +3,10 @@ import { NavController, ToastController } from 'ionic-angular';
 import { RapportProvider, Rapport } from '../../providers/rapport/rapport'
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-gestion-rapprot',
+  templateUrl: 'gestion-rapport.html'
 })
-export class HomePage {
+export class GestionRapportPage {
   rapports: any[] = [];
   onlyInactives: boolean = false;
   searchDate: Date = null;
