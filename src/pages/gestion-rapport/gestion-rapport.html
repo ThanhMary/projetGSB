@@ -12,7 +12,7 @@
     <ion-list>
     <ion-item-sliding *ngFor="let rapport of rapports">
       <button ion-item (click)="editRapport(rapport.id)">
-        <h1>{{ rapport.rdate }}</h1>
+        <h1>{{ rapport.date }}</h1>
         <p> {{ rapport.praticien_nom}} </p>
       </button>
       <ion-item-options side="left">
